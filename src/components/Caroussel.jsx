@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '../Pages/home.css';
 
 export default function Caroussel(props) {
