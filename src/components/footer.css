@@ -1,0 +1,18 @@
+.footer-content{
+    display: flex;
+    max-width: 1300px;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 330px;
+    margin-top: 70px;
+}
+.footer-bottom{
+    text-align: center;
+}
+.propos{
+    max-width: 500px;
+}
+footer{
+    margin-left: 130px;
+    margin-right: 130px;
+}

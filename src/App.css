@@ -1,0 +1,9 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body{
+   background: #2b2323;
+background: linear-gradient(90deg, rgb(42, 37, 37) 27%, rgba(23, 20, 20, 1) 80%, rgb(31, 31, 30) 100%);
+    color: white;
+    font-family: "Rubik", sans-serif;
+}

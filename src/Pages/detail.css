@@ -1,0 +1,31 @@
+.detail-image{
+    width: 400px;
+    height: 500px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 3px 2px rgb(113, 86, 86);
+}
+.detail{
+    display: flex;
+    gap: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 80px;
+}
+.avis{
+    display: flex;
+    gap: 5px;
+}
+.note{
+    color: gold;
+}
+
+.return{
+    font-weight: 200;
+    font-style: italic;
+}
+.detail-info{
+    max-width: 650px;
+}
+.detail-info h4{
+    font-weight: 400;
+}
