@@ -10,6 +10,20 @@
 background: linear-gradient(90deg, rgb(42, 37, 37) 27%, rgba(23, 20, 20, 1) 80%, rgb(31, 31, 30) 100%);
     color: white;
 }
+.carou{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.text-center{
+    text-align: center;
+    font-size: 30px;
+}
+.carou-img{
+    border-radius: 15px;
+}
 .card:hover{
     transform: scale(1.015);
     cursor: pointer;

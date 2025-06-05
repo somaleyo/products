@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import '../Pages/home.css';
 
-export default function Caroussel(props) {
+import '../Pages/home.css'
+export default function ReactCarousel(props) {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
         fetch("https://fakestoreapi.com/products/")
@@ -21,58 +20,47 @@ export default function Caroussel(props) {
             });
     }, []);
 
+    // Auto-play du carrousel
     useEffect(() => {
         if (data.length > 0) {
-            const carouselElement = document.getElementById('carouselExample');
-            if (carouselElement) {
-                const carousel = new window.bootstrap.Carousel(carouselElement, {
-                    interval: 4000,
-                    ride: 'carousel',
-                    pause: false,
-                    wrap: true,
-                });
-            }
+            const interval = setInterval(() => {
+                setCurrentIndex((prevIndex) => 
+                    prevIndex === data.length - 1 ? 0 : prevIndex + 1
+                );
+            }, 4000);
+            
+            return () => clearInterval(interval);
         }
-    }, [data]);
+    }, [data.length]);
+
+    const goToPrevious = () => {
+        setCurrentIndex(currentIndex === 0 ? data.length - 1 : currentIndex - 1);
+    };
+
+    const goToNext = () => {
+        setCurrentIndex(currentIndex === data.length - 1 ? 0 : currentIndex + 1);
+    };
 
     if (loading) return <div className="text-center p-4">Chargement...</div>;
     if (error) return <div className="text-center p-4 text-red-500">Erreur: {error}</div>;
 
-  
+    if (data.length === 0) return <div className="text-center p-4">Aucun produit trouvé</div>;
 
     return (
-        <>
-            <h1 className="text-center text-3xl font-bold mb-6 text-gray-800">Nos Produits</h1>
-
-            <div
-                id="carouselExample"
-                className="carousel slide mx-auto shadow-lg bg-white"
-                style={{ maxWidth: '700px',maxHeight:"480px" }}
-            >
-                <div className="carousel-inner">
-                    {data.map((product, index) => (
-                        <div
-                            key={product.id}
-                            className={`carousel-item ${index === 0 ? 'active' : ''}`}
-                            style={{ minHeight: '500px' }}
-                        >
-                            <div className="d-flex flex-column justify-content-center align-items-center text-center p-4 h-100">
-                                <img
-                                    src={product.image}
-                                    className="mb-4"
-                                    alt={product.title}
-                                    style={{
-                                        maxHeight: '350px',
-                                        maxWidth: '300px',
-                                        objectFit: 'contain'
-                                    }}
-                                />
-                                
-                            </div>
-                        </div>
-                    ))}
+        <div className="carou min-h-screen flex flex-col items-center justify-center p-4">
+            <h1 className="text-center text-3xl font-bold mb-8 text-white">Nos Produits</h1>
+            
+            <div className="relative bg-white rounded-lg shadow-lg overflow-hidden" style={{ height: '500px', width: '500px' }}>
+                {/* Image uniquement */}
+                <div className="   ">
+                    <img
+                        src={data[currentIndex]?.image}
+                        alt={data[currentIndex]?.title}
+                        className=" carou-img"
+                        style={{ maxHeight: '400px', maxWidth: '400px' }}
+                    />
                 </div>
             </div>
-        </>
+        </div>
     );
 }

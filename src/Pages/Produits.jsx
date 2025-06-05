@@ -4,7 +4,7 @@ import Caroussel from '../components/Caroussel'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
-
+import './produit.css'
 
 export default function Produit(props) {
 
